@@ -1,0 +1,93 @@
+const quizData = [
+
+{
+question:"Capital of India?",
+options:["Delhi","Mumbai","Kolkata","Chennai"],
+answer:0
+},
+
+{
+question:"2 + 2 = ?",
+options:["2","3","4","5"],
+answer:2
+},
+
+{
+question:"Largest planet?",
+options:["Earth","Mars","Jupiter","Venus"],
+answer:2
+}
+
+]
+
+// TIMER
+let timeLeft = 180;
+
+const timer = document.createElement("h3");
+timer.id = "timer";
+document.body.prepend(timer);
+
+setInterval(() => {
+
+let minutes = Math.floor(timeLeft / 60);
+let seconds = timeLeft % 60;
+
+timer.innerText = "Time Left: " + minutes + ":" + seconds;
+
+timeLeft--;
+
+if(timeLeft < 0){
+submitQuiz();
+}
+
+},1000);
+
+
+// QUIZ DISPLAY
+const quiz = document.getElementById("quiz")
+
+quizData.forEach((q,i)=>{
+
+let div=document.createElement("div")
+div.classList.add("question")
+
+let html=`<p>${i+1}. ${q.question}</p>`
+
+q.options.forEach((opt,j)=>{
+
+html+=`
+
+<label>
+<input type="radio" name="q${i}" value="${j}">
+${opt}
+</label><br>
+
+`
+
+})
+
+div.innerHTML=html
+quiz.appendChild(div)
+
+})
+
+
+// SUBMIT FUNCTION
+function submitQuiz(){
+
+let score=0
+
+quizData.forEach((q,i)=>{
+
+let ans=document.querySelector(`input[name=q${i}]:checked`)
+
+if(ans && ans.value==q.answer){
+score++
+}
+
+})
+
+document.getElementById("result").innerText =
+"Your Score: "+score+"/"+quizData.length
+
+}
