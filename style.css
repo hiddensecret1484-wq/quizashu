@@ -1,0 +1,36 @@
+body{
+
+font-family: Arial;
+background:#f4f6fb;
+text-align:center;
+padding:30px;
+
+}
+
+.container{
+
+background:white;
+max-width:700px;
+margin:auto;
+padding:20px;
+border-radius:10px;
+
+}
+
+.question{
+
+margin:20px 0;
+text-align:left;
+
+}
+
+button{
+
+padding:12px 25px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+
+}
